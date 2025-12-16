@@ -1,0 +1,10 @@
+{
+    "match": "Match Management",
+    "match_desc": "Create, track and finish matches with ease.",
+    "teams": "Team Formation",
+    "teams_desc": "Build teams manually or randomly.",
+    "championships": "Championships",
+    "championships_desc": "Create and track leagues of your favorite sport.",
+    "stats": "Statistics",
+    "stats_desc": "Track player and team performance."
+  }

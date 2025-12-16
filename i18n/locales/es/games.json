@@ -1,0 +1,30 @@
+{
+    "title": "Gestor de Juegos",
+    "addGame": "Agregar Juego",
+    "editGame": "Editar Juego",
+    "deleteGame": "Eliminar Juego",
+    "searchGame": "Buscar juego...",
+    "noGames": "No se encontraron juegos",
+    "gameDetails": "Detalles del Juego",
+    "selectGame": "Seleccionar Juego",
+    "categories": {
+      "sports": "Deportes",
+      "esports": "E-Sports",
+      "boardGames": "Juegos de Mesa",
+      "cardGames": "Juegos de Cartas"
+    },
+    "types": {
+      "football": "Fútbol",
+      "volleyball": "Voleibol",
+      "basketball": "Baloncesto",
+      "pool": "Billar",
+      "domino": "Dominó",
+      "truco": "Truco",
+      "lol": "League of Legends",
+      "cs2": "Counter-Strike 2",
+      "valorant": "Valorant",
+      "fifa": "EA Sports FC",
+      "dota": "Dota 2",
+      "fortnite": "Fortnite"
+    }
+  }

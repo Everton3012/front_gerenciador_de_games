@@ -1,0 +1,17 @@
+{
+    "general": "Ocorreu um erro. Tente novamente.",
+    "network": "Erro de conexão. Verifique sua internet.",
+    "notFound": "Página não encontrada",
+    "unauthorized": "Você não tem permissão para acessar esta página",
+    "serverError": "Erro no servidor. Tente novamente mais tarde.",
+    "invalidCredentials": "Email ou senha inválidos",
+    "emailRequired": "Email é obrigatório",
+    "passwordRequired": "Senha é obrigatória",
+    "passwordTooShort": "A senha deve ter no mínimo 6 caracteres",
+    "emailInvalid": "Email inválido",
+    "fieldRequired": "Este campo é obrigatório",
+    "duplicateEntry": "Este registro já existe",
+    "sessionExpired": "Sua sessão expirou. Faça login novamente.",
+    "invalidToken": "Token inválido ou expirado",
+    "timeout": "A requisição demorou muito. Tente novamente."
+  }

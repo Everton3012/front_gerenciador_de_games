@@ -1,0 +1,10 @@
+{
+    "match": "Gerenciamento de Partidas",
+    "match_desc": "Crie, acompanhe e finalize partidas com facilidade.",
+    "teams": "Formação de Times",
+    "teams_desc": "Monte equipes manualmente ou aleatoriamente.",
+    "championships": "Campeonatos",
+    "championships_desc": "Crie e acompanhe ligas do seu esporte favorito.",
+    "stats": "Estatísticas",
+    "stats_desc": "Acompanhe o desempenho de jogadores e equipes."
+  }

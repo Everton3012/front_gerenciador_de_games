@@ -1,0 +1,17 @@
+{
+    "home": "Home",
+    "games": "Games",
+    "matches": "Matches",
+    "championships": "Championships",
+    "teams": "Teams",
+    "players": "Players",
+    "statistics": "Statistics",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "about": "About",
+    "help": "Help",
+    "contact": "Contact"
+  }

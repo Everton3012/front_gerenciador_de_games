@@ -1,0 +1,30 @@
+{
+    "title": "Games Manager",
+    "addGame": "Add Game",
+    "editGame": "Edit Game",
+    "deleteGame": "Delete Game",
+    "searchGame": "Search game...",
+    "noGames": "No games found",
+    "gameDetails": "Game Details",
+    "selectGame": "Select Game",
+    "categories": {
+      "sports": "Sports",
+      "esports": "E-Sports",
+      "boardGames": "Board Games",
+      "cardGames": "Card Games"
+    },
+    "types": {
+      "football": "Football",
+      "volleyball": "Volleyball",
+      "basketball": "Basketball",
+      "pool": "Pool",
+      "domino": "Domino",
+      "truco": "Truco",
+      "lol": "League of Legends",
+      "cs2": "Counter-Strike 2",
+      "valorant": "Valorant",
+      "fifa": "EA Sports FC",
+      "dota": "Dota 2",
+      "fortnite": "Fortnite"
+    }
+  }

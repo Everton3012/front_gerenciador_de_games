@@ -1,0 +1,17 @@
+{
+    "general": "An error occurred. Please try again.",
+    "network": "Connection error. Check your internet.",
+    "notFound": "Page not found",
+    "unauthorized": "You don't have permission to access this page",
+    "serverError": "Server error. Please try again later.",
+    "invalidCredentials": "Invalid email or password",
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required",
+    "passwordTooShort": "Password must be at least 6 characters",
+    "emailInvalid": "Invalid email",
+    "fieldRequired": "This field is required",
+    "duplicateEntry": "This record already exists",
+    "sessionExpired": "Your session has expired. Please log in again.",
+    "invalidToken": "Invalid or expired token",
+    "timeout": "The request took too long. Please try again."
+  }

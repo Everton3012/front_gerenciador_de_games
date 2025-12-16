@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "title": "Organiza juegos y campeonatos",
+    "subtitle": "sin desorden y sin hojas de cálculo",
+    "description": "Crea partidos, forma equipos, rastrea rankings y gestiona campeonatos en una sola plataforma. Ideal para juegos casuales, ligas y e-sports.",
+    "cta": "Comenzar gratis",
+    "howItWorks": "Cómo funciona"
+  },
+  "steps": {
+    "title": "Cómo funciona",
+    "step1": {
+      "title": "Crea el juego o campeonato",
+      "description": "Elige el tipo de juego y el formato de la competencia."
+    },
+    "step2": {
+      "title": "Invita jugadores",
+      "description": "Crea equipos manualmente o aleatoriamente."
+    },
+    "step3": {
+      "title": "Resultados y ranking",
+      "description": "El sistema calcula todo automáticamente."
+    }
+  },
+  "benefits": {
+    "benefit1": "Adiós hojas de cálculo",
+    "benefit2": "Ranking automático",
+    "benefit3": "Historial de partidos",
+    "benefit4": "Varios tipos de juegos"
+  },
+  "cta": {
+    "title": "¿Listo para organizar tus juegos?",
+    "description": "Crea tu cuenta gratuita y comienza hoy mismo.",
+    "button": "Crear cuenta gratuita"
+  }
+}

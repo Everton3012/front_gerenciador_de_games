@@ -1,0 +1,10 @@
+{
+    "match": "Gestión de Partidos",
+    "match_desc": "Crea, rastrea y finaliza partidos con facilidad.",
+    "teams": "Formación de Equipos",
+    "teams_desc": "Crea equipos manualmente o aleatoriamente.",
+    "championships": "Campeonatos",
+    "championships_desc": "Crea y rastrea ligas de tu deporte favorito.",
+    "stats": "Estadísticas",
+    "stats_desc": "Rastrea el rendimiento de jugadores y equipos."
+  }

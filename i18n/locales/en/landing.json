@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "title": "Organize games and championships",
+    "subtitle": "no mess and no spreadsheets",
+    "description": "Create matches, form teams, track rankings and manage championships on a single platform. Ideal for casual games, leagues and e-sports.",
+    "cta": "Start for free",
+    "howItWorks": "How it works"
+  },
+  "steps": {
+    "title": "How it works",
+    "step1": {
+      "title": "Create game or championship",
+      "description": "Choose the game type and competition format."
+    },
+    "step2": {
+      "title": "Invite players",
+      "description": "Build teams manually or randomly."
+    },
+    "step3": {
+      "title": "Results and ranking",
+      "description": "The system calculates everything automatically."
+    }
+  },
+  "benefits": {
+    "benefit1": "No more spreadsheets",
+    "benefit2": "Automatic ranking",
+    "benefit3": "Match history",
+    "benefit4": "Multiple game types"
+  },
+  "cta": {
+    "title": "Ready to organize your games?",
+    "description": "Create your free account and start today.",
+    "button": "Create free account"
+  }
+}
