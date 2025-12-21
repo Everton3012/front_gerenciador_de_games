@@ -36,41 +36,25 @@
         </div>
   
         <!-- FORM -->
-        <form v-else class="space-y-6" @submit.prevent="handleForgotPassword">
+        <Form v-else @submit="handleForgotPassword" :validation-schema="forgotPasswordSchema" class="space-y-6">
           <div>
             <!-- EMAIL -->
             <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               {{ t('auth.email') }}
             </label>
-            <input
+            <Field
               id="email"
               name="email"
               type="email"
               autocomplete="email"
-              required
               v-model="email"
               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 
                      placeholder-gray-500 text-gray-900 dark:text-white 
                      bg-white dark:bg-gray-800 rounded-md focus:outline-none focus:ring-blue-500 
                      focus:border-blue-500 focus:z-10 sm:text-sm"
-              :placeholder="t('auth.emailPlaceholder')"
+              :placeholder="`${t('auth.emailExample')}@example.com`"
             />
-          </div>
-  
-          <!-- ERROR MESSAGE -->
-          <div v-if="error" class="rounded-md bg-red-50 dark:bg-red-900/50 p-4">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm font-medium text-red-800 dark:text-red-200">
-                  {{ error }}
-                </p>
-              </div>
-            </div>
+            <ErrorMessage name="email" class="mt-1 text-sm text-red-600" />
           </div>
   
           <!-- SUBMIT BUTTON -->
@@ -102,7 +86,7 @@
               {{ t('auth.backToLogin') }}
             </NuxtLink>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   </template>
@@ -110,34 +94,29 @@
   <script setup lang="ts">
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import { Form, Field, ErrorMessage } from 'vee-validate'
+  import { useAuthValidation } from '../../../composables/useAuthValidation'
   
   const { t } = useI18n()
+  const { forgotPasswordSchema } = useAuthValidation()
   
   // Form state
   const email = ref('')
   const loading = ref(false)
-  const error = ref('')
   const emailSent = ref(false)
   
   // Handle forgot password
-  const handleForgotPassword = async () => {
+  const handleForgotPassword = async (values: any) => {
     loading.value = true
-    error.value = ''
   
     try {
-      // Basic email validation
-      if (!email.value || !email.value.includes('@')) {
-        throw new Error(t('auth.invalidEmail'))
-      }
-  
-      // TODO: Implementar envio real de email de recuperação
-      console.log('Forgot password for:', email.value)
+      console.log('Forgot password for:', values.email)
   
       // Simular API call
       await new Promise(resolve => setTimeout(resolve, 1000))
   
       // Simular erro para demonstração
-      if (email.value === 'error@example.com') {
+      if (values.email === 'error@example.com') {
         throw new Error('E-mail não encontrado')
       }
   
@@ -145,7 +124,8 @@
       emailSent.value = true
   
     } catch (err: any) {
-      error.value = err.message || t('auth.forgotPasswordError')
+      console.error('Forgot password failed:', err)
+      throw err // vee-validate vai capturar e mostrar o erro
     } finally {
       loading.value = false
     }

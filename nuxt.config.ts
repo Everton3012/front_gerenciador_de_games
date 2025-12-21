@@ -14,7 +14,9 @@ export default defineNuxtConfig({
     //'@sidebase/nuxt-auth',
     '@nuxtjs/i18n'
   ],
-  
+  build: {
+    transpile: ['vee-validate']
+  },
   // @ts-ignore
   i18n: {
     lazy: true,    
