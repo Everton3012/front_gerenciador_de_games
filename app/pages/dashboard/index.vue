@@ -1,33 +1,169 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-      <!-- HEADER -->
-      <div class="text-center">
-        <NuxtLink to="/" class="inline-block">
-          <h1
-            class="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-            GameManager
-          </h1>
-        </NuxtLink>
-        <h2 class="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
-          {{ t('auth.signIn') }}
-        </h2>
-        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-          {{ t('auth.loginSubtitle') }}
-        </p>
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- HEADER -->
+    <header class="bg-white dark:bg-gray-800 shadow">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-6">
+          <div class="flex items-center">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
+          </div>
+          <div class="flex items-center space-x-4">
+            <span class="text-sm text-gray-700 dark:text-gray-300">
+              Olá, {{ 'Usuário' }}
+            </span>
+            <button @click="handleLogout"
+              class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+              Logout
+            </button>
+          </div>
+        </div>
       </div>
+    </header>
 
-      <!-- FORM -->
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <div class="px-4 py-6 sm:px-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- CARD 1: Jogos -->
+          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <svg class="h-8 w-8 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
+                      Jogos Gerenciados
+                    </dt>
+                    <dd class="text-lg font-medium text-gray-900 dark:text-white">
+                      12
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <!-- CARD 2: Conquistas -->
+          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <svg class="h-8 w-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
+                      Conquistas Desbloqueadas
+                    </dt>
+                    <dd class="text-lg font-medium text-gray-900 dark:text-white">
+                      45
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    </div>
+          <!-- CARD 3: Horas Jogadas -->
+          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <svg class="h-8 w-8 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                  </svg>
+                </div>
+                <div class="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
+                      Horas Jogadas
+                    </dt>
+                    <dd class="text-lg font-medium text-gray-900 dark:text-white">
+                      127h
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO ADICIONAL -->
+        <div class="mt-8">
+          <h2 class="text-lg font-medium text-gray-900 dark:text-white">Jogos Recentes</h2>
+          <div class="mt-4 bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-md">
+            <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+              <li>
+                <div class="px-4 py-4 sm:px-6">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 truncate">
+                      The Legend of Zelda
+                    </p>
+                    <div class="ml-2 flex-shrink-0 flex">
+                      <p
+                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        Completo
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-2 sm:flex sm:justify-between">
+                    <div class="sm:flex">
+                      <p class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        Última sessão: 2 horas atrás
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- Adicione mais itens -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { onMounted } from 'vue'
+import { useAuth } from '../../../composables/useAuth'
+import { navigateTo } from 'nuxt/app'
 
+const { accessToken, user, loadFromStorage, fetchUser, logout } = useAuth()
 
-const { t } = useI18n()
+const handleLogout = () => {
+  logout()
+  navigateTo('/login')
+}
 
+onMounted(async () => {
+  // Carrega manualmente se necessário
+  loadFromStorage()
+
+  if (!accessToken.value) {
+    console.log('No token, redirecting to /login')
+    navigateTo('/login')
+    return
+  }
+
+  try {
+    await fetchUser()
+  } catch (error) {
+    console.error('Failed to fetch user:', error)
+  }
+
+  if (!accessToken.value || !user.value) {
+    console.log('No valid auth, redirecting to /login')
+    navigateTo('/login')
+  }
+})
 </script>

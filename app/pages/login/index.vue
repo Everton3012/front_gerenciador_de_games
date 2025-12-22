@@ -18,7 +18,7 @@
       </div>
 
       <!-- FORM -->
-      <Form method="post" @submit="handleLogin" :validation-schema="loginSchema" class="space-y-6">
+      <Form @submit="handleLogin" :validation-schema="loginSchema" class="space-y-6">
         <div class="space-y-4">
           <!-- EMAIL -->
           <div>

@@ -3,7 +3,10 @@ import { defineNuxtPlugin } from "nuxt/app"
 import { useAuth } from "../composables/useAuth"
 
 export default defineNuxtPlugin(() => {
-  const { accessToken, refreshAccessToken } = useAuth()
+  const { accessToken, refreshAccessToken, loadFromStorage } = useAuth()
+
+  // Carrega estado do localStorage
+  loadFromStorage()
 
   // Interceptor para adicionar token automaticamente
   const api = $fetch.create({
