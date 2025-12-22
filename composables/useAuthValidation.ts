@@ -15,7 +15,6 @@ export const useAuthValidation = () => {
     email: z.email('E-mail inválido'),
     password: z.string().min(8, 'Senha deve ter pelo menos 8 caracteres'),
     confirmPassword: z.string(),
-    agreeTerms: z.boolean().refine(val => val === true, 'Você deve aceitar os termos')
   }).refine(data => data.password === data.confirmPassword, {
     message: 'Senhas não coincidem',
     path: ['confirmPassword']

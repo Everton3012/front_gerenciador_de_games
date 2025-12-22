@@ -1,9 +1,9 @@
 // composables/useAuth.ts
 import { ref, computed, readonly } from 'vue'
 import type { User, AuthResponse, LoginData, RegisterData } from '../@types/auth'
-import { authService } from '../services/auth.service.ts'
-const apiBaseUrl = process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost:3001'
-
+import { authService } from '../services/auth.service'
+import { API_BASE_URL } from '../constants/api'
+import { STORAGE_KEYS } from '../constants/auth'
 
 export const useAuth = () => {
   const user = ref<User | null>(null)
@@ -18,18 +18,18 @@ export const useAuth = () => {
     authService.setToken(accessToken.value)
   }
 
-  const login = async (data: LoginData): Promise<AuthResponse> => {
+  const login = async (email: string, password: string): Promise<AuthResponse> => {
     isLoading.value = true
     try {
-      const response = await authService.login(data)
+      const response = await authService.login({ email, password })
       accessToken.value = response.access_token
       refreshToken.value = response.refresh_token
       user.value = response.user
       syncToken()
       if (import.meta.client) {
-        localStorage.setItem('access_token', response.access_token)
-        localStorage.setItem('refresh_token', response.refresh_token)
-        localStorage.setItem('user', JSON.stringify(response.user))
+        localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, response.access_token)
+        localStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, response.refresh_token)
+        localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.user))
       }
       return response
     } finally {
@@ -46,9 +46,9 @@ export const useAuth = () => {
       user.value = response.user
       syncToken()
       if (import.meta.client) {
-        localStorage.setItem('access_token', response.access_token)
-        localStorage.setItem('refresh_token', response.refresh_token)
-        localStorage.setItem('user', JSON.stringify(response.user))
+        localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, response.access_token)
+        localStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, response.refresh_token)
+        localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.user))
       }
       return response
     } finally {
@@ -58,13 +58,13 @@ export const useAuth = () => {
 
   const loginWithGoogle = async (): Promise<void> => {
     if (import.meta.client) {
-      window.location.href = `${apiBaseUrl}/auth/google`
+      window.location.href = `${API_BASE_URL}/auth/google`
     }
   }
 
   const loginWithDiscord = async (): Promise<void> => {
     if (import.meta.client) {
-      window.location.href = `${apiBaseUrl}/auth/discord`
+      window.location.href = `${API_BASE_URL}/auth/discord`
     }
   }
 
@@ -79,9 +79,9 @@ export const useAuth = () => {
       user.value = null
       syncToken()
       if (import.meta.client) {
-        localStorage.removeItem('access_token')
-        localStorage.removeItem('refresh_token')
-        localStorage.removeItem('user')
+        localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN)
+        localStorage.removeItem(STORAGE_KEYS.REFRESH_TOKEN)
+        localStorage.removeItem(STORAGE_KEYS.USER)
       }
     }
   }
@@ -93,7 +93,7 @@ export const useAuth = () => {
       accessToken.value = response.access_token
       syncToken()
       if (import.meta.client) {
-        localStorage.setItem('access_token', response.access_token)
+        localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, response.access_token)
       }
       return response.access_token
     } catch (error) {
@@ -104,9 +104,9 @@ export const useAuth = () => {
 
   const loadFromStorage = (): void => {
     if (import.meta.client) {
-      const storedAccessToken = localStorage.getItem('access_token')
-      const storedRefreshToken = localStorage.getItem('refresh_token')
-      const storedUser = localStorage.getItem('user')
+      const storedAccessToken = localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN)
+      const storedRefreshToken = localStorage.getItem(STORAGE_KEYS.REFRESH_TOKEN)
+      const storedUser = localStorage.getItem(STORAGE_KEYS.USER)
       if (storedAccessToken) accessToken.value = storedAccessToken
       if (storedRefreshToken) refreshToken.value = storedRefreshToken
       if (storedUser) user.value = JSON.parse(storedUser)
@@ -127,9 +127,20 @@ export const useAuth = () => {
     }
   }
 
+  const setTokens = (access: string, refresh: string) => {
+    accessToken.value = access
+    refreshToken.value = refresh
+    syncToken()
+    if (import.meta.client) {
+      localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, access)
+      localStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, refresh)
+    }
+  }
+
   return {
     user: readonly(user),
     accessToken: readonly(accessToken),
+    refreshToken: readonly(refreshToken),
     isAuthenticated,
     isLoading,
     login,
@@ -139,6 +150,7 @@ export const useAuth = () => {
     logout,
     refreshAccessToken,
     loadFromStorage,
-    fetchUser
+    fetchUser,
+    setTokens
   }
 }
