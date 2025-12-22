@@ -4,7 +4,7 @@ import { useAuth } from "../composables/useAuth"
 
 export default defineNuxtPlugin(() => {
   const { accessToken, refreshAccessToken } = useAuth()
-  
+
   // Interceptor para adicionar token automaticamente
   const api = $fetch.create({
     baseURL: '/api',

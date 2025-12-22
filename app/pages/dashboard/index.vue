@@ -4,7 +4,8 @@
       <!-- HEADER -->
       <div class="text-center">
         <NuxtLink to="/" class="inline-block">
-          <h1 class="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          <h1
+            class="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
             GameManager
           </h1>
         </NuxtLink>
@@ -17,16 +18,16 @@
       </div>
 
       <!-- FORM -->
-      
+
 
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n'
 
-  
-  const { t } = useI18n()
-  
-  </script>
+
+const { t } = useI18n()
+
+</script>
