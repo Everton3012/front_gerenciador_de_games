@@ -2,7 +2,7 @@
 import { ref, computed, readonly } from 'vue'
 import type { User, AuthResponse, LoginData, RegisterData } from '../@types/auth'
 import { authService } from '../services/auth.service'
-import { API_BASE_URL } from '../constants/api'
+import { useApiConfig } from '../composables/useApiConfig'
 import { STORAGE_KEYS } from '../constants/auth'
 
 export const useAuth = () => {
@@ -10,6 +10,7 @@ export const useAuth = () => {
   const accessToken = ref<string | null>(null)
   const refreshToken = ref<string | null>(null)
   const isLoading = ref(false)
+  const { apiBaseUrl } = useApiConfig()
 
   const isAuthenticated = computed(() => !!accessToken.value && !!user.value)
 
@@ -21,7 +22,7 @@ export const useAuth = () => {
   const login = async (email: string, password: string): Promise<AuthResponse> => {
     isLoading.value = true
     try {
-      const response = await authService.login({ email, password })
+      const response = await authService.login(email, password)
       accessToken.value = response.access_token
       refreshToken.value = response.refresh_token
       user.value = response.user
@@ -57,14 +58,15 @@ export const useAuth = () => {
   }
 
   const loginWithGoogle = async (): Promise<void> => {
+    
     if (import.meta.client) {
-      window.location.href = `${API_BASE_URL}/auth/google`
+      window.location.href = `${apiBaseUrl}/auth/google`
     }
   }
 
   const loginWithDiscord = async (): Promise<void> => {
     if (import.meta.client) {
-      window.location.href = `${API_BASE_URL}/auth/discord`
+      window.location.href = `${apiBaseUrl}/auth/discord`
     }
   }
 
