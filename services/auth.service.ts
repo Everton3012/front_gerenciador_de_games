@@ -22,7 +22,6 @@ export const authService = {
   
   login: async (email: string, password: string): Promise<AuthResponse> => {
     const { apiBaseUrl, apiEndpoints } = useApiConfig()
-    // Não use apiFetch (que adiciona Authorization), use $fetch direto
     return await $fetch<AuthResponse>(`${apiBaseUrl}${apiEndpoints.auth.login}`, {
       method: 'POST',
       body: { email, password },

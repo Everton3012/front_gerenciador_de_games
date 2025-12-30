@@ -1,9 +1,10 @@
 // utils/api.ts
-import { API_BASE_URL } from '../constants/api_endpoints'
+import { useApiConfig } from "~/composables/useApiConfig"
 
 export const apiFetch = async <T>(endpoint: string, options: any = {}): Promise<T> => {
   const token = localStorage.getItem('access_token')
-  return $fetch<T>(`${API_BASE_URL}${endpoint}`, {
+  const { apiBaseUrl } = useApiConfig()
+  return $fetch<T>(`${apiBaseUrl}${endpoint}`, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
